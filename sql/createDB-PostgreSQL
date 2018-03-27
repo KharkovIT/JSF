@@ -1,0 +1,91 @@
+-- Table: public.admins
+
+-- DROP TABLE public.admins;
+
+CREATE TABLE public.admins
+(
+    id integer NOT NULL DEFAULT nextval('admins_id_seq'::regclass),
+    "firstName" character varying(30) COLLATE pg_catalog."default" NOT NULL,
+    "lastName" character varying(30) COLLATE pg_catalog."default" NOT NULL,
+    login character varying(30) COLLATE pg_catalog."default" NOT NULL,
+    password character varying(30) COLLATE pg_catalog."default" NOT NULL,
+    "phoneNumber" character varying(20) COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT admins_pkey PRIMARY KEY (id)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.admins
+    OWNER to postgres;
+
+-- Table: public.options
+
+-- DROP TABLE public.options;
+
+CREATE TABLE public.options
+(
+    "idQuestion" integer NOT NULL,
+    option character varying(100) COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT options_pkey PRIMARY KEY ("idQuestion"),
+    CONSTRAINT fk_to_question FOREIGN KEY ("idQuestion")
+        REFERENCES public.questions (id) MATCH SIMPLE
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.options
+    OWNER to postgres;
+
+-- Table: public.question
+
+-- DROP TABLE public.question;
+
+CREATE TABLE public.question
+(
+    id integer NOT NULL DEFAULT nextval('question_id_seq'::regclass),
+    label character varying(100) COLLATE pg_catalog."default" NOT NULL,
+    type integer NOT NULL,
+    required boolean NOT NULL,
+    active boolean NOT NULL,
+    "idAdmin" integer NOT NULL,
+    CONSTRAINT question_pkey PRIMARY KEY (id),
+    CONSTRAINT fk_to_admins FOREIGN KEY ("idAdmin")
+        REFERENCES public.admins (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.questions
+    OWNER to postgres;
+
+-- Table: public.respones
+
+-- DROP TABLE public.respones;
+
+CREATE TABLE public.respones
+(
+    id integer NOT NULL DEFAULT nextval('respones_id_seq'::regclass),
+    "idQuestion" integer NOT NULL,
+    CONSTRAINT respones_pkey PRIMARY KEY (id),
+    CONSTRAINT fk_to_question FOREIGN KEY ("idQuestion")
+        REFERENCES public.questions (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.responses
+    OWNER to postgres;

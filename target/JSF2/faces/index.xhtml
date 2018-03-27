@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+<h:head>
+    <h:outputStylesheet library="css" name="loginPage.css"  />
+</h:head>
+<f:view>
+    <h:form>
+        <p:outputLabel styleClass="alert" value="Login"/>
+        <h:inputText  value="#{TryToLogin.login}" />
+        <p:outputLabel styleClass="alert"  value="Password"/>
+        <h:inputText  value="#{TryToLogin.password}"/>
+        <p:selectBooleanCheckbox value="#{TryToLogin.remember}" /> Remember Me
+        <p:commandLink value="Forgot the password?"/>
+        <p:commandButton id="TryButton" value="Login"  action="#{TryToLogin.tryToLogin()}" styleClass="submit"/>
+        <!--<p:commandButton value="Submit" icon="ui-icon-check" />-->
+    </h:form>
+
+</f:view>
+
+
+
+</html>

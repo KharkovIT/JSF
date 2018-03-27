@@ -1,0 +1,23 @@
+<hibernate-mapping>
+<class name="entity.Admin" table="admins" catalog="mydb">
+    <id name="id" type="java.lang.Integer">
+        <column name="id"/>
+        <generator class="identity"/>
+    </id>
+    <property name="firstName" type="java.lang.String">
+        <column name="firstName" length="30" not-null="true" unique="false"/>
+    </property>
+    <property name="lastName" type="java.lang.String">
+        <column name="lastName" length="30" not-null="true" unique="false"/>
+    </property>
+    <property name="login" type="java.lang.String">
+        <column name="login" length="30" not-null="true" unique="false"/>
+    </property>
+    <property name="password" type="java.lang.String">
+        <column name="password" length="30" not-null="true" unique="false"/>
+    </property>
+    <property name="phoneNumber" type="java.lang.String">
+        <column name="phoneNumber" length="30" not-null="true" unique="false"/>
+    </property>
+</class>
+</hibernate-mapping>
