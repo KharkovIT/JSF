@@ -26,36 +26,33 @@ public class Question {
     @Column(name = "idAdmin")
     private @Getter int idAdmin;
 
-    public Question setIdAdmin(int idAdmin) {
+    public void setIdAdmin(int idAdmin) {
         this.idAdmin = idAdmin;
-        return this;
+
     }
 
 
 
-    public Question setId(int id) {
+    public void setId(int id) {
         this.id = id;
-        return this;
+
     }
 
-    public Question setLabel(String label) {
+    public void setLabel(String label) {
         this.label = label;
-        return this;
     }
 
-    public Question setType(Type type) {
+    public void setType(Type type) {
         this.type = type;
-        return this;
+
     }
 
-    public Question setRequired(boolean required) {
+    public void setRequired(boolean required) {
         this.required = required;
-        return this;
     }
 
-    public Question setActive(boolean active) {
+    public void setActive(boolean active) {
         this.active = active;
-        return this;
     }
 
     @Override

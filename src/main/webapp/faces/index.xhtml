@@ -6,24 +6,45 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough" xmlns:c="http://java.sun.com/jsp/jstl/core">
 <h:head>
-    <h:outputStylesheet library="css" name="loginPage.css"  />
+    <h:outputStylesheet library="css" name="index.css"/>
 </h:head>
 <f:view>
-    <h:form>
-        <p:outputLabel styleClass="alert" value="Login"/>
-        <h:inputText  value="#{TryToLogin.login}" />
-        <p:outputLabel styleClass="alert"  value="Password"/>
-        <h:inputText  value="#{TryToLogin.password}"/>
-        <p:selectBooleanCheckbox value="#{TryToLogin.remember}" /> Remember Me
-        <p:commandLink value="Forgot the password?"/>
-        <p:commandButton id="TryButton" value="Login"  action="#{TryToLogin.tryToLogin()}" styleClass="submit"/>
-        <!--<p:commandButton value="Submit" icon="ui-icon-check" />-->
-    </h:form>
+    <h:body>
+        <h:form>
+            <p:megaMenu orientation="" style="margin-top:20px">
+                <p:menuitem value="Login" action="#{Main.login()}" icon="ui-icon-close"/>
+            </p:megaMenu>
+        </h:form>
 
+        <c:forEach items="#{Main.questions}" var="item">
+            <br></br>
+            <p:outputLabel value="${item.label}"/>
+
+            <c:if test="${item.type == 1}">
+                <p:inputText placeholder="answer"/>
+            </c:if>
+            <c:if test="${item.type == Type.values()[1]}">
+                <p:inputText placeholder="answer"/>
+            </c:if>
+            <c:if test="${item.type == Type.RADIOBUTTON}">
+                <p:inputText placeholder="answer"/>
+            </c:if>
+            <c:if test="${item.type == Type.CHECKBOX}">
+                <p:inputText placeholder="answer"/>
+            </c:if>
+            <c:if test="${item.type == Type.COMBOBOX}">
+                <p:inputText placeholder="answer"/>
+            </c:if>
+            <c:if test="${item.type == Type.DATE}">
+                <p:inputText placeholder="answer"/>
+            </c:if>
+        </c:forEach>
+
+
+    </h:body>
 </f:view>
-
 
 
 </html>

@@ -2,60 +2,66 @@ package services;
 
 import dao.postgreSQL.AdminDAOImpl;
 import entity.Admin;
+import hibernate.HibernateMethods;
+import hibernate.HibernateUtil;
 
 import java.util.List;
 
 public class AdminService {
     private static AdminDAOImpl adminDAO;
+    private HibernateMethods hibernateMethods;
 
     public AdminService() {
         adminDAO = new AdminDAOImpl();
+        hibernateMethods = new HibernateMethods();
     }
 
     public void persist(Admin entity) {
-        adminDAO.openCurrentSessionwithTransaction();
+        adminDAO.hibernateMethods.openCurrentSessionwithTransaction();
         adminDAO.persist(entity);
-        adminDAO.closeCurrentSessionwithTransaction();
+        adminDAO.hibernateMethods.closeCurrentSessionwithTransaction();
     }
 
     public void update(Admin entity) {
-        adminDAO.openCurrentSessionwithTransaction();
+        adminDAO.hibernateMethods.openCurrentSessionwithTransaction();
         adminDAO.update(entity);
-        adminDAO.closeCurrentSessionwithTransaction();
+        adminDAO.hibernateMethods.closeCurrentSessionwithTransaction();
     }
 
     public Admin findById(int id) {
-        adminDAO.openCurrentSession();
+        adminDAO.hibernateMethods.openCurrentSession();
         Admin admin = adminDAO.findById(id);
-        adminDAO.closeCurrentSession();
+        adminDAO.hibernateMethods.closeCurrentSession();
         return admin;
     }
 
     public void delete(int id) {
-        adminDAO.openCurrentSessionwithTransaction();
+        adminDAO.hibernateMethods.openCurrentSessionwithTransaction();
         Admin admin = adminDAO.findById(id);
         adminDAO.delete(admin);
-        adminDAO.closeCurrentSessionwithTransaction();
+        adminDAO.hibernateMethods.closeCurrentSessionwithTransaction();
     }
 
     public List<Admin> findAll() {
-        adminDAO.openCurrentSession();
+        adminDAO.hibernateMethods.openCurrentSession();
         List<Admin> admins = adminDAO.findAll();
-        adminDAO.closeCurrentSession();
+        adminDAO.hibernateMethods.closeCurrentSession();
         return admins;
     }
 
     public void deleteAll() {
-        adminDAO.openCurrentSessionwithTransaction();
+        adminDAO.hibernateMethods.openCurrentSessionwithTransaction();
         adminDAO.deleteAll();
-        adminDAO.closeCurrentSessionwithTransaction();
+        adminDAO.hibernateMethods.closeCurrentSessionwithTransaction();
     }
+
     public Admin findbyLoginPassword(String login, String password) {
-        adminDAO.openCurrentSession();
-        Admin admin = adminDAO.findByLoginAndPassword(login,password );
-        adminDAO.closeCurrentSession();
+        adminDAO.hibernateMethods.openCurrentSession();
+        Admin admin = adminDAO.findByLoginAndPassword(login, password);
+        adminDAO.hibernateMethods.closeCurrentSession();
         return admin;
     }
+
     public AdminDAOImpl AdminDAOImpl() {
         return adminDAO;
     }

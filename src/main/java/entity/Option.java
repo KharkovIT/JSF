@@ -25,14 +25,14 @@ public class Option  {
         return idQuestion;
     }
 
-    public Option setIdQuestion(int idQuestion) {
+    public void setIdQuestion(int idQuestion) {
         this.idQuestion = idQuestion;
-        return this;
+
     }
 
-    public Option setOption(String option) {
+    public void setOption(String option) {
         this.option = option;
-        return this;
+
     }
 
     @Override

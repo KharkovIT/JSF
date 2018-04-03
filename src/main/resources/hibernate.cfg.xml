@@ -12,5 +12,8 @@
         <property name="show_sql">false</property>
         <mapping class="entity.Admin"/>
         <mapping class="entity.Option"/>
+        <mapping class="entity.Question"/>
+        <mapping class="entity.Response"/>
+        <mapping class="entity.Type"/>
     </session-factory>
 </hibernate-configuration>

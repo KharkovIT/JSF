@@ -8,7 +8,7 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ManagedBean;
 
 
-@ManagedBean(name = "TryToLogin")
+@ManagedBean(name = "TryToLogin", eager = true)
 @SessionScoped
 public class TryToLogin extends  Admin{
 
@@ -16,6 +16,15 @@ public class TryToLogin extends  Admin{
 
 
     AdminService adminService;
+
+    public Boolean getRemember() {
+        return remember;
+    }
+
+    public void setRemember(Boolean remember) {
+        this.remember = remember;
+    }
+
     private Boolean remember;
 
 
@@ -28,13 +37,15 @@ public class TryToLogin extends  Admin{
 
     }
 
-    public Boolean getRemember() {
-        return remember;
-    }
+
 
     public String tryToLogin() {
         Admin foundAdmin = adminService.findbyLoginPassword(getLogin(),getPassword());
-        return foundAdmin != null ? "fields.jsf" : "userNotFound.jsf";
+        return foundAdmin != null ? "fields.xhtml" : "401.xhtml";
+    }
+
+    public String singUp() {
+        return  "singUp.jsf" ;
     }
 
 

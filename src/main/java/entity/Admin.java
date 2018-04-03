@@ -45,54 +45,52 @@ public class Admin {
         return id;
     }
 
-    public Admin setId(int id) {
+    public void setId(int id) {
         this.id = id;
-        return this;
     }
 
     public String getFirstName() {
         return firstName;
     }
 
-    public Admin setFirstName(String firstName) {
+    public void setFirstName(String firstName) {
         this.firstName = firstName;
-        return this;
+
     }
 
     public String getLastName() {
         return lastName;
     }
 
-    public Admin setLastName(String lastName) {
+    public void setLastName(String lastName) {
         this.lastName = lastName;
-        return this;
+
     }
 
     public String getLogin() {
         return login;
     }
 
-    public Admin setLogin(String login) {
+    public void setLogin(String login) {
         this.login = login;
-        return this;
+
     }
 
     public String getPassword() {
         return password;
     }
 
-    public Admin setPassword(String password) {
+    public void setPassword(String password) {
         this.password = password;
-        return this;
+
     }
 
     public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public Admin setPhoneNumber(String phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
-        return this;
     }
 
 

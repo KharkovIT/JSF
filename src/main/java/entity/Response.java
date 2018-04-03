@@ -19,18 +19,27 @@ public class Response {
     @Column(name = "answer")
     private @Getter String answer;
 
-    public Response setId(int id) {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
         this.id = id;
-        return this;
     }
 
-    public Response setIdQuestion(int idQuestion) {
+    public int getIdQuestion() {
+        return idQuestion;
+    }
+
+    public void setIdQuestion(int idQuestion) {
         this.idQuestion = idQuestion;
-        return this;
     }
 
-    public Response setAnswer(String answer) {
+    public String getAnswer() {
+        return answer;
+    }
+
+    public void setAnswer(String answer) {
         this.answer = answer;
-        return this;
     }
 }
