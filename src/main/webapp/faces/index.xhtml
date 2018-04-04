@@ -14,7 +14,7 @@
     <h:body>
         <h:form>
             <p:megaMenu orientation="" style="margin-top:20px">
-                <p:menuitem value="Login" action="#{Main.login()}" icon="ui-icon-close"/>
+                <p:menuitem value="Login" action="#{Main.login()}"/>
             </p:megaMenu>
         </h:form>
 
@@ -22,7 +22,7 @@
             <br></br>
             <p:outputLabel value="${item.label}"/>
 
-            <c:if test="${item.type == 1}">
+            <c:if test="${item.type == MULTILINE}">
                 <p:inputText placeholder="answer"/>
             </c:if>
             <c:if test="${item.type == Type.values()[1]}">
