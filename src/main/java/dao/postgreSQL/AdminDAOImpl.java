@@ -3,16 +3,10 @@ package dao.postgreSQL;
 import dao.AdminDAO;
 import entity.Admin;
 import hibernate.HibernateMethods;
-import hibernate.HibernateUtil;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-
 import org.hibernate.query.Query;
 
-
 import javax.persistence.NoResultException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class AdminDAOImpl implements AdminDAO<Admin> {
@@ -28,7 +22,9 @@ public class AdminDAOImpl implements AdminDAO<Admin> {
     }
 
     public void update(Admin entity) {
+        Transaction tx = hibernateMethods.sessionFactory.getCurrentSession().beginTransaction();
         hibernateMethods.sessionFactory.getCurrentSession().update(entity);
+       tx.commit();
     }
 
     public Admin findById(int id) {
@@ -54,10 +50,10 @@ public class AdminDAOImpl implements AdminDAO<Admin> {
     }
 
     @Override
-    public Admin findByLoginAndPassword(String login, String password) {
+    public Admin findByLoginAndPassword(String email, String password) {
         Transaction tx = hibernateMethods.sessionFactory.getCurrentSession().beginTransaction();
-        Query query = hibernateMethods.sessionFactory.getCurrentSession().createQuery("from Admin where login = :login and password = :password");
-        query.setParameter("login", login);
+        Query query = hibernateMethods.sessionFactory.getCurrentSession().createQuery("from Admin where email = :email and password = :password");
+        query.setParameter("email", email);
         query.setParameter("password", password);
         try {
             Admin returnedAdmin = (Admin) query.getSingleResult();

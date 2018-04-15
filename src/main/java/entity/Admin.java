@@ -1,16 +1,10 @@
 package entity;
 
-import lombok.Getter;
-import lombok.Setter;
-
-
-import java.io.Serializable;
-import java.util.Objects;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.Objects;
 
 @Entity
 @Table(name = "admins", schema = "public")
@@ -26,8 +20,8 @@ public class Admin {
     private String lastName;
 
 
-    @Column(name = "login")
-    private String login;
+    @Column(name = "email")
+    private String email;
 
 
     @Column(name = "password")
@@ -67,13 +61,12 @@ public class Admin {
 
     }
 
-    public String getLogin() {
-        return login;
+    public String getEmail() {
+        return email;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
-
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
@@ -102,7 +95,7 @@ public class Admin {
         return id == admin.id &&
                 Objects.equals(firstName, admin.firstName) &&
                 Objects.equals(lastName, admin.lastName) &&
-                Objects.equals(login, admin.login) &&
+                Objects.equals(email, admin.email) &&
                 Objects.equals(password, admin.password) &&
                 Objects.equals(phoneNumber, admin.phoneNumber);
     }
@@ -110,7 +103,7 @@ public class Admin {
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, firstName, lastName, login, password, phoneNumber);
+        return Objects.hash(id, firstName, lastName, email, password, phoneNumber);
     }
 
     @Override
@@ -119,7 +112,7 @@ public class Admin {
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", login='" + login + '\'' +
+                ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 '}';

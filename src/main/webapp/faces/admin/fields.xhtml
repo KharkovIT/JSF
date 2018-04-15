@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui" xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+    <h:outputStylesheet library="css" name="fields.css"/>
+</h:head>
+<f:view>
+    <h:body>
+        <h:form>
+            <p:megaMenu style="margin-top:20px">
+                <p:submenu label="#{Fields.name}">
+                    <p:column>
+                        <p:submenu>
+                            <p:menuitem value="Edit password" onclick="PF('editPassword').show();"/>
+                            <p:menuitem value="Edit profile" onclick="PF('editProfile').show();"/>
+                            <p:menuitem value="Quit" action="#{Fields.logout()}"/>
+                        </p:submenu>
+                    </p:column>
+                </p:submenu>
+                <p:menuitem value="Responses" action="#{Fields.responses()}"/>
+                <p:menuitem value="Fields" action="#{Fields.fields()}"/>
+            </p:megaMenu>
+        </h:form>
+
+        <p:dialog id="editPass" header="Edit password" widgetVar="editPassword" modal="true"
+                  width="285" height="249">
+            <h:outputText value="Current password"/>
+            <h:inputSecret/>
+            <h:outputText value="New password"/>
+            <h:inputSecret/>
+            <h:outputText value="Confirm password"/>
+            <h:inputSecret/>
+            <p:commandButton value="Change"/>
+        </p:dialog>
+
+        <p:dialog header="Edit profile" widgetVar="editProfile" modal="true" width="289" height="249">
+            <h:outputText value="First Name"/>
+            <p:inputText/>
+            <h:outputText value="Last Name"/>
+            <p:inputText/>
+            <h:outputText value="Email"/>
+            <p:inputText/>
+            <h:outputText value="Phone Number"/>
+            <p:inputText/>
+            <p:commandButton value="Change"/>
+        </p:dialog>
+
+        <h:form>
+            <p:dataTable id="tbl" var="question" value="#{Fields.questions}"
+                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
+                         paginator="true" rows="10" style="margin-bottom:20px">
+
+                <f:facet name="{Exporters}">
+                    <h:commandLink>
+                        <p:graphicImage name="/demo/images/pdf.png" width="24"/>
+                        <p:dataExporter type="pdf" target="tbl" fileName="cars"/>
+                    </h:commandLink>
+                </f:facet>
+
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Label"/>
+                    </f:facet>
+                    <h:outputText value="#{question.label}"/>
+                </p:column>
+
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Type"/>
+                    </f:facet>
+                    <h:outputText value="#{question.type}"/>
+                </p:column>
+
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Required"/>
+                    </f:facet>
+                    <h:outputText value="#{question.required}"/>
+                </p:column>
+
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Active"/>
+                    </f:facet>
+                    <h:outputText value="#{question.active}"/>
+                </p:column>
+            </p:dataTable>
+
+
+    </h:form>
+</h:body>
+</f:view>
+        </html>

@@ -3,7 +3,7 @@ package services;
 import dao.postgreSQL.AdminDAOImpl;
 import entity.Admin;
 import hibernate.HibernateMethods;
-import hibernate.HibernateUtil;
+import utils.Encoder;
 
 import java.util.List;
 
@@ -57,7 +57,7 @@ public class AdminService {
 
     public Admin findbyLoginPassword(String login, String password) {
         adminDAO.hibernateMethods.openCurrentSession();
-        Admin admin = adminDAO.findByLoginAndPassword(login, password);
+        Admin admin = adminDAO.findByLoginAndPassword(login, Encoder.encode(password));
         adminDAO.hibernateMethods.closeCurrentSession();
         return admin;
     }

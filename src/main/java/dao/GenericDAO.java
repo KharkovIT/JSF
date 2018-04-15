@@ -4,12 +4,13 @@ import java.util.List;
 
 public interface GenericDAO<T> {
 
-     void update(T entity);
-     T findById(int id);
+    void update(T entity);
 
-     void delete(T entity);
+    T findById(int id);
 
-     List<T> findAll();
+    void delete(T entity);
 
-     void deleteAll();
+    List<T> findAll();
+
+    void deleteAll();
 }

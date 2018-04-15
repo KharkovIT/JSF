@@ -1,12 +1,10 @@
 package entity;
 
 
-import lombok.Getter;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
 import java.util.Objects;
 
 @Entity
@@ -14,23 +12,23 @@ import java.util.Objects;
 public class Question {
     @Id
     @Column(name = "id")
-    private @Getter int id;
+    private int id;
     @Column(name = "label")
-    private @Getter String label;
+    private String label;
     @Column(name = "type")
-    private @Getter Type type;
+    private Type type;
     @Column(name = "required")
-    private @Getter boolean required;
+    private boolean required;
     @Column(name = "active")
-    private @Getter boolean active;
+    private boolean active;
     @Column(name = "idAdmin")
-    private @Getter int idAdmin;
+    private int idAdmin;
+
 
     public void setIdAdmin(int idAdmin) {
         this.idAdmin = idAdmin;
 
     }
-
 
 
     public void setId(int id) {
@@ -60,7 +58,7 @@ public class Question {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Question question = (Question) o;
-        return id == question.id ;
+        return id == question.id;
     }
 
     @Override
@@ -78,5 +76,29 @@ public class Question {
                 ", required=" + required +
                 ", active=" + active +
                 '}';
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getLabel() {
+        return label;
+    }
+
+    public Type getType() {
+        return type;
+    }
+
+    public boolean isRequired() {
+        return required;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public int getIdAdmin() {
+        return idAdmin;
     }
 }

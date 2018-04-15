@@ -48,8 +48,8 @@
     </role>
     <schema id="10" parent="2" name="public">
       <ObjectId>2200</ObjectId>
-      <IntrospectionTimestamp>2018-04-04.00:59:34.613</IntrospectionTimestamp>
-      <IntrospectionStateNumber>606</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2018-04-11.23:29:35.576</IntrospectionTimestamp>
+      <IntrospectionStateNumber>644</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -94,7 +94,7 @@
     </sequence>
     <table id="19" parent="10" name="admins">
       <ObjectId>16414</ObjectId>
-      <StateNumber>592</StateNumber>
+      <StateNumber>644</StateNumber>
     </table>
     <table id="20" parent="10" name="options">
       <ObjectId>16402</ObjectId>
@@ -131,18 +131,18 @@
       <StateNumber>594</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="26" parent="19" name="login">
+    <column id="26" parent="19" name="email">
       <Position>4</Position>
       <DataType>varchar(30)|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>560</StateNumber>
+      <StateNumber>623</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="27" parent="19" name="password">
       <Position>5</Position>
-      <DataType>varchar(30)|0</DataType>
+      <DataType>varchar|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>560</StateNumber>
+      <StateNumber>644</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="28" parent="19" name="phonenumber">
@@ -159,7 +159,7 @@
     </index>
     <index id="30" parent="19" name="admins_login_uindex">
       <ObjectId>16457</ObjectId>
-      <ColNames>login</ColNames>
+      <ColNames>email</ColNames>
       <Unique>1</Unique>
     </index>
     <key id="31" parent="19" name="admins_pkey">
@@ -277,11 +277,11 @@
       <TypeId>23</TypeId>
       <SequenceName>respones_id_seq</SequenceName>
     </column>
-    <column id="47" parent="22" name="idQuestion">
+    <column id="47" parent="22" name="idquestion">
       <Position>2</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>565</StateNumber>
+      <StateNumber>609</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <column id="48" parent="22" name="answer">
@@ -304,7 +304,7 @@
     </key>
     <foreign-key id="51" parent="22" name="fk_to_question">
       <ObjectId>16449</ObjectId>
-      <ColNames>idQuestion</ColNames>
+      <ColNames>idquestion</ColNames>
       <RefTableId>16396</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>questions</RefTableName>

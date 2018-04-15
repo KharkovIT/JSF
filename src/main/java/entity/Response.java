@@ -2,6 +2,7 @@ package entity;
 
 
 import lombok.Getter;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -13,11 +14,14 @@ import javax.persistence.Table;
 public class Response {
     @Id
     @Column(name = "id")
-    private @Getter int id;
+    private @Getter
+    int id;
     @Column(name = "idQuestion")
-    private @Getter int idQuestion;
+    private @Getter
+    int idQuestion;
     @Column(name = "answer")
-    private @Getter String answer;
+    private @Getter
+    String answer;
 
     public int getId() {
         return id;

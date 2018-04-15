@@ -1,16 +1,14 @@
 package entity;
 
-import lombok.Getter;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
 import java.util.Objects;
 
 @Entity
 @Table(name = "options", schema = "public")
-public class Option  {
+public class Option {
     @Id
     @Column(name = "idQuestion")
     private int idQuestion;
